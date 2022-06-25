@@ -1,0 +1,1 @@
+docker-compose  --env-file ../env/.dev.pull.env -f ./docker-compose.pull.yml up -d

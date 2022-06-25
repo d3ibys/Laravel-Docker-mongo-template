@@ -1,0 +1,2 @@
+#!/bin/bash
+docker-compose  --env-file ../env/.dev.build.env -f ./docker-compose.mysql.build.yml up --build -d

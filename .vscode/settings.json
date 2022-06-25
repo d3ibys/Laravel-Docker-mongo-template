@@ -1,0 +1,21 @@
+{
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.showInStatusBar": "always",
+    "debug.toolBarLocation": "docked",
+    "debug.inlineValues": true,
+    "debug.openDebug": "openOnSessionStart",
+    "debug.showSubSessionsInToolBar": true,
+    "debug.console.closeOnEnd": true,
+    "debug.onTaskErrors": "showErrors",
+    "debug.openExplorerOnEnd": true,
+    "php.validate.executablePath": "c:\\php",
+    "docker.certPath": "/certs",
+    "githubPullRequests.remotes": [
+        "origingithub",
+        "upstream"
+    ],
+    "files.associations": {
+        "*.env.*": "dotenv",
+        "*dockerfile*": "dockerfile"
+    }
+}

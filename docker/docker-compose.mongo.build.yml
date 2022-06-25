@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  apachephp:
+    container_name: ${projectname}_apachephp
+    build:
+      context: ${buildcontext}
+      dockerfile: ${dockerfile}
+    environment:
+      - APACHE_RUN_USER=#${UID}
+      - APACHE_RUN_GROUP=#${GID}      
+      - APP_URL=${url}
+    working_dir: /var/www/html
+    ports:
+      - ${extport}:${innerport}
+    volumes:
+      - ../src:/var/www/html
+      - ../logs:/var/log
+    networks:
+      - projectnetwork
+  mongo:
+    container_name: ${projectname}_mongo
+    build:
+      context: ./db
+      dockerfile: mongodb/mongodb.dockerfile
+
+    working_dir: /data/db
+    command:
+      - '--auth'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
+      - MONGO_INITDB_COLLECTION=${MONGO_TAGS_COLLECTION}
+    ports:
+      - 27017:27017
+    volumes:
+      - ../mongodata:/data/db
+      - ./db/mongodb/data:/data/extdata
+      - ../logs/mongo:/var/log/mongodb
+    networks:
+      - projectnetwork
+networks:
+  projectnetwork:
+    driver: bridge

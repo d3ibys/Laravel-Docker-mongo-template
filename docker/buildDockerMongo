@@ -1,0 +1,2 @@
+#!/bin/sh
+docker-compose --env-file ../env/.dev.build.env -f ./docker-compose.mongo.build.yml up --build -d
